@@ -1,4 +1,4 @@
-function fingerprint_browser(brower) {
+function fingerprint_browser() {
     "use strict";
     var strOnError, strUserAgent, numVersion, strBrowser, strOut;
 
@@ -103,13 +103,13 @@ function fingerprint_flash(flash) {
             strVersion = "N/A";
         }
         strOut = strVersion;
-        document.getElementById(flash.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(flash.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_canvas(canvas) {
+function fingerprint_canvas() {
     "use strict";
     var strOnError, canvas, strCText, strText, strOut;
 
@@ -152,12 +152,12 @@ function fingerprint_connection(connection) {
         strOut = strConnection;
     } catch (err) {
         // return N/A if navigator.connection object does not apply to this device
-        document.getElementById(connection.Class).innerHTML=strOnError;
+        return strOnError;
     }
-    document.getElementById(connection.Class).innerHTML=strOut;
+    return strOut;
 }
 
-function fingerprint_cookie(cookie) {
+function fingerprint_cookie() {
     "use strict";
     var strOnError, bolCookieEnabled, bolOut;
 
@@ -174,13 +174,13 @@ function fingerprint_cookie(cookie) {
             bolCookieEnabled = (document.cookie.indexOf("testcookie") !== -1) ? true : false;
         }
         bolOut = bolCookieEnabled;
-        document.getElementById(cookie.Class).innerHTML=bolOut;
+        return bolOut;
     } catch (err) {
-        document.getElementById(cookie.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_display(display) {
+function fingerprint_display() {
     "use strict";
     var strSep, strPair, strOnError, strScreen, strDisplay, strOut;
 
@@ -197,13 +197,13 @@ function fingerprint_display(display) {
             strDisplay = strScreen.colorDepth + strSep + strScreen.width + strSep + strScreen.height + strSep + strScreen.availWidth + strSep + strScreen.availHeight;
         }
         strOut = strDisplay;
-        document.getElementById(display.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(display.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_fontsmoothing(fontsmoothing) {
+function fingerprint_fontsmoothing() {
     "use strict";
     var strOnError, strFontSmoothing, canvasNode, ctx, i, j, imageData, alpha, strOut;
 
@@ -242,14 +242,14 @@ function fingerprint_fontsmoothing(fontsmoothing) {
             }
             strOut = strFontSmoothing;
         } catch (err) {
-            document.getElementById(fontsmoothing.Class).innerHTML=strOnError;
+            return strOnError;
         }
     }
     strOut = strFontSmoothing;
-    document.getElementById(fontsmoothing.Class).innerHTML=strOut;
+    return strOut;
 }
 
-function fingerprint_fonts(fonts) {
+function fingerprint_fonts() {
     "use strict";
     var strOnError, style, fonts, count, template, fragment, divs, i, font, div, body, result, e;
 
@@ -295,13 +295,13 @@ function fingerprint_fonts(fonts) {
         for (i = 0; i < count; i = i + 1) {
             body.removeChild(divs[i]);
         }
-        document.getElementById(fonts.Class).innerHTML=result.join('|');
+        return result.join('|');
     } catch (err) {
-        document.getElementById(fonts.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_formfields(formfields) {
+function fingerprint_formfields() {
     "use strict";
     var i, j, numOfForms, numOfInputs, strFormsInPage, strFormsInputsData, strInputsInForm, strTmp, strOut;
 
@@ -330,10 +330,10 @@ function fingerprint_formfields(formfields) {
     }
     strTmp = strFormsInputsData.join("|");
     strOut = strTmp;
-    document.getElementById(formfields.Class).innerHTML=strOut;
+    return strOut;
 }
 
-function fingerprint_java(java) {
+function fingerprint_java() {
     "use strict";
     var strOnError, strJavaEnabled, strOut;
 
@@ -348,13 +348,13 @@ function fingerprint_java(java) {
             strJavaEnabled = "false";
         }
         strOut = strJavaEnabled;
-        document.getElementById(java.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(java.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_language(language) {
+function fingerprint_language() {
     "use strict";
     var strSep, strPair, strOnError, strLang, strTypeLng, strTypeBrLng, strTypeSysLng, strTypeUsrLng, strOut;
 
@@ -392,13 +392,13 @@ function fingerprint_language(language) {
             strLang += "userlang" + strPair;
         }
         strOut = strLang;
-        document.getElementById(language.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(language.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_silverlight(silverlight) {
+function fingerprint_silverlight() {
     "use strict";
     var strOnError, objControl, objPlugin, strSilverlightVersion, strOut;
 
@@ -436,13 +436,13 @@ function fingerprint_silverlight(silverlight) {
             }
         }
         strOut = strSilverlightVersion;
-        document.getElementById(silverlight.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(silverlight.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_timezone(timezone) {
+function fingerprint_timezone() {
     "use strict";
     var strOnError, dtDate, numOffset, numGMTHours, numOut;
 
@@ -472,10 +472,10 @@ function fingerprint_touch(touch) {
             bolTouchEnabled = true;
         }
         bolOut = bolTouchEnabled;
-        document.getElementById(touch.Class).innerHTML=bolOut;
+        return bolOut;
     } catch (ignore) {
         bolOut = bolTouchEnabled
-        document.getElementById(touch.Class).innerHTML=bolOut;
+        return bolOut;
     }
 }
 
@@ -576,9 +576,9 @@ function fingerprint_plugins() {
             strTemp = "None";
         }
         strOut = strTemp;
-        document.getElementById(plugins.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(plugins.Class).innerHTML=err;
+        return err;
     }
 }
 
