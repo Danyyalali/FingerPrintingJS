@@ -132,13 +132,13 @@ function fingerprint_canvas() {
         strCText.fillStyle = "rgba(102, 204, 0, 0.7)";
         strCText.fillText(strText, 4, 17);
         strOut = canvas.toDataURL();
-        document.getElementById(canvas.Class).innerHTML=strOut;
+        return strOut;
     } catch (err) {
-        document.getElementById(canvas.Class).innerHTML=strOnError;
+        return strOnError;
     }
 }
 
-function fingerprint_connection(connection) {
+function fingerprint_connection() {
     "use strict";
     var strOnError, strConnection, strOut;
 
